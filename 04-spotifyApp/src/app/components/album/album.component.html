@@ -1,0 +1,74 @@
+<app-loading *ngIf="showLoading"></app-loading>
+
+<div *ngIf="album" class="row animated fadeIn">
+
+    <div class="col-2">
+
+        <img [src]="album.images | noImage" alt="" class="img-thumbnail img-circle">
+        <p class="mt-2 text-center">
+            <small>{{album.release_date | date:'yyyy'}} &#8226; {{album.total_tracks}} tracks</small>
+        </p>
+    </div>
+
+    <div class="col">
+        <h3>{{album.name}}</h3>
+        <p (click)="showArtist(album.artists[0].id)" class="puntero">
+            <small>{{album.artists[0].name}}</small>
+        </p>
+        <p>
+            <a [href]="album.external_urls.spotify" target="_blank">
+              Go to de spotify artist web
+            </a>
+        </p>
+    </div>
+
+    <div class="col-4 text-right">
+
+        <button class="btn btn-outline-danger" routerLink="['home']">Go Back</button>
+
+    </div>
+
+</div>
+
+
+<div *ngIf="tracks" class="row animated fadeIn m-5">
+    <div class="col">
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Track</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of tracks">
+                    <td>{{track.track_number}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-1">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="col pl-0">
+                                {{track.name}}
+                                <br>
+                                <small (click)="showArtist(artist.id)" *ngFor="let artist of track.artists | slice:1" class="puntero">
+                                  {{artist.name}}
+                              </small>
+                            </div>
+
+                            <div class="col-3">
+                                {{track.duration_ms | date:'m:ss'}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="album">
+            <small>
+            {{album.copyrights[0].text}}
+            </small>
+        </p>
+    </div>
+
+</div>

@@ -1,0 +1,5 @@
+<app-error [error]="messageError" *ngIf="serviceError"></app-error>
+
+<app-loading *ngIf="showLoading && !serviceError"></app-loading>
+
+<app-cards [items]="newRelases"></app-cards>

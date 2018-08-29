@@ -1,0 +1,12 @@
+<div class="card-columns mt-5">
+    <div (click)="showDetail(item)" *ngFor="let item of items" class="card puntero">
+        <img class="card-img-top" [src]="item.images | noImage" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+            <p *ngIf="item.artists" class="card-text">
+                <span (click)="showArtist(artist.id)" *ngFor="let artist of item.artists" class="badge badge-pill badge-primary puntero">{{artist.name}}</span>
+            </p>
+            <p *ngIf="item.release_date" class="card-text"><small class="text-muted">Release Date {{item.release_date | date}}</small></p>
+        </div>
+    </div>
+</div>

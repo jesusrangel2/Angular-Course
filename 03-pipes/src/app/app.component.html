@@ -1,0 +1,137 @@
+<div class="container">
+    <br>
+    <h1>Pipes</h1>
+
+    <hr>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Variable</th>
+                <th scope="col">Pipe</th>
+                <th scope="col">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{name}}</th>
+                <td>uppercase</td>
+                <td>{{name | uppercase}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{name}}</th>
+                <td>lowercase</td>
+                <td>{{name | lowercase}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{name}}</th>
+                <td>slice:3</td>
+                <td>{{name | slice:3}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{name}}</th>
+                <td>slice:0:3</td>
+                <td>{{name | slice:0:3}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{array}}</th>
+                <td>slice:1:5</td>
+                <td>{{array | slice:1:5}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{PI}}</th>
+                <td>number</td>
+                <td>{{PI | number}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{PI}}</th>
+                <td>number:'1.0-2'</td>
+                <td>{{PI | number:'1.0-2'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{a}}</th>
+                <td>percent</td>
+                <td>{{a | percent}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{a}}</th>
+                <td>percent:'2.2-3'</td>
+                <td>{{a | percent:'2.2-3'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{salary}}</th>
+                <td>currency</td>
+                <td>{{salary | currency}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{salary}}</th>
+                <td>currency:'EUR'</td>
+                <td>{{salary | currency:'EUR'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{salary}}</th>
+                <td>currency:'EUR':true:'4.0-2'</td>
+                <td>{{salary | currency:'EUR':true:'4.0-2'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{salary}}</th>
+                <td>number:'.2-2'</td>
+                <td>{{salary | number:'.2-2'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{promiseValue}}</th>
+                <td>async</td>
+                <td>{{promiseValue | async}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{fecha}}</th>
+                <td>date</td>
+                <td>{{fecha | date}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{fecha}}</th>
+                <td>date:'medium'</td>
+                <td>{{fecha | date:'medium'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{fecha}}</th>
+                <td>date:'MMMM - dd'</td>
+                <td>{{fecha | date:'MMMM - dd'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{name2}}</th>
+                <td>capitalize</td>
+                <td>{{name2 | capitalize}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{name2}}</th>
+                <td>capitalize:false</td>
+                <td>{{name2 | capitalize:false}}</td>
+            </tr>
+            <tr>
+                <th scope="row">{{name}}</th>
+                <td>
+                    password:{{active}}
+                    <br>
+                    <button (click)="active = !active" type="button" class="btn btn-outline-primary">
+                    Activar/Desactivar
+                  </button>
+                </td>
+                <td>{{name | password:active}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Slice</h3>
+    <ul>
+        <li *ngFor="let item of array | slice:4:20 ">{{item}}</li>
+    </ul>
+
+    <h3>Json</h3>
+    <pre>{{heroe | json }}</pre>
+
+    <h3>Youtube</h3>
+    <iframe width="560" height="315" [src]="youtube | domSave:'https://www.youtube.com/embed/'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <br><br>
+</div>

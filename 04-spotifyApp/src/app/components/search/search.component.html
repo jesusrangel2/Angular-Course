@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col">
+        <input #searhInput type="text" (keyup)="search(searhInput.value)" class="form-control" placeholder="Search Artist">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <app-loading *ngIf="showLoading"></app-loading>
+        <app-cards *ngIf="artists" [items]="artists"></app-cards>
+    </div>
+</div>
