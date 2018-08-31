@@ -1,0 +1,13 @@
+<div *ngIf="profile" class="row">
+    <div class="col-md-4">
+        <img [src]="profile.picture" alt="" class="img-fluid ">
+    </div>
+    <div class="col-md-8">
+        <ul>
+            <li>Name: {{profile.name}}</li>
+            <li>Nickname: {{profile.nickname}}</li>
+            <li>Gender: {{profile.gender}}</li>
+            <li>Update: {{profile.updated_at | date}}</li>
+        </ul>
+    </div>
+</div>

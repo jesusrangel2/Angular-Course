@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{list.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list-header>
+        ToDo Task
+    </ion-list-header>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>New Task</ion-label>
+            <ion-input [(ngModel)]="nameItem" (keyup.enter)="addItem()" type="text"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list **ngIf="list.items.length > 0">
+        <ion-list-header>
+            ToDo Task
+        </ion-list-header>
+        <ion-item- sliding *ngFor="let item of list.items; let i= index" class="animated fadeInDown">
+
+            <button ion-item detail-none (click)="updateTask(item)">
+                <ion-icon *ngIf="item.finish" name="checkbox-outline" item-start></ion-icon>
+                <ion-icon *ngIf="!item.finish" name="square-outline" item-start></ion-icon>
+                            {{item.description}}
+            </button>
+
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="deleteTask(i)" icon-only>
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </ion-item-options>
+
+            </ion-item-sliding>
+
+    </ion-list>
+</ion-content>
