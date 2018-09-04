@@ -1,0 +1,65 @@
+<div class="container p-2">
+
+    <form action="">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-info">
+                topLeft
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-6 bg-danger text-right">
+                topright
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-danger">
+                <div class="search-input-box">
+                    <label for="search-origin">Origin</label>
+                    <input (keyup)="searchOrigin()" type="text" [(ngModel)]="origin" autocomplete=off class="form-control" id="search-origin" list="origin-list" name="pasta" placeholder="Origin">
+                    <datalist id="origin-list">
+                        <option value="{{origin.code}}" *ngFor="let origin of listOrigin">
+                            {{origin.city_fullname}}
+                            <span>{{origin.name}}</span>
+                        </option>
+                    </datalist>
+                    <input type="hidden" name="origin_iata" [(ngModel)]="origin_iata" name="origin_iata">
+                    <div class="search-pseudo-input">
+                        <span class="search-pseudo-name"></span>
+                        <span class="search-pseudo-country-name"></span>
+                    </div>
+                </div>
+                <div class="twidget-origin-iata">PHL</div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-info">
+                <div class="search-input-box">
+                    <label for="search-arrival">Destination</label>
+                    <input type="text" class="form-control" id="search-arrival" placeholder="Arrival">
+                    <input type="hidden" name="arrival_iata" value="STI">
+                    <div class="search-pseudo-input">
+                        <span class="search-pseudo-name"></span>
+                        <span class="search-pseudo-country-name"></span>
+                    </div>
+                </div>
+                <div class="twidget-origin-iata">PHL</div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-danger">
+                departur
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-info">
+                return
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-danger">
+                passangers
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-info">
+                button
+            </div>
+
+        </div>
+    </form>
+
+</div>
