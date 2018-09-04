@@ -1,23 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { FormsModule} from '@angular/forms'
+
 
 import { AppComponent } from './app.component';
-import { FormByTemplateComponent } from './components/form-by-template/form-by-template.component';
-import { FormByDataComponent } from './components/form-by-data/form-by-data.component';
+import { HeroesComponent } from './components/heroes/heroes.component';
+import { HeroeComponent } from './components/heroe/heroe.component';
+import { APP_ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormByTemplateComponent,
-    FormByDataComponent
+    HeroesComponent,
+    HeroeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    APP_ROUTES
   ],
   providers: [],
   bootstrap: [AppComponent]

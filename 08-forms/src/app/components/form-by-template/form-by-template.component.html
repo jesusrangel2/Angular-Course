@@ -1,14 +1,20 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
-<form>
+<form novalidate (ngSubmit)="save(formTemplate)" #formTemplate="ngForm">
 
     <div>
 
-        <div class="form-group row">
+        <div class="form-group row ">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
 
-                <input class="form-control" type="text" placeholder="Nombre">
+                <input #nameField="ngModel" [ngClass]="{'is-invalid': (nameField.errors?.required || nameField.errors?.minlength) && nameField.touched}" class="form-control " type="text" placeholder="Nombre" name="name" [(ngModel)]="user.name" required minlength="5">
+                <div class="invalid-feedback" *ngIf="nameField.errors?.required">
+                    This field is required
+                </div>
+                <div class="invalid-feedback" *ngIf="nameField.errors?.minlength">
+                    This field min lenght is {{nameField.errors.minlength.requiredLength}}
+                </div>
             </div>
         </div>
 
@@ -16,7 +22,14 @@
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col-8">
 
-                <input class="form-control" type="text" placeholder="Apellido">
+                <input #lastNameField="ngModel" [ngClass]="{'is-invalid': (lastNameField.errors?.required || lastNameField.errors?.minlength) && lastNameField.touched}" class="form-control" type="text" placeholder="Apellido" name="lastName" [(ngModel)]="user.lastName"
+                    required minlength="5">
+                <div class="invalid-feedback" *ngIf="lastNameField.errors?.required">
+                    This field is required
+                </div>
+                <div class="invalid-feedback" *ngIf="lastNameField.errors?.minlength">
+                    This field min lenght is {{lastNameField.errors.minlength.requiredLength}}
+                </div>
             </div>
         </div>
 
@@ -26,16 +39,52 @@
         <label class="col-2 col-form-label">Correo</label>
         <div class="col-md-8">
 
-            <input class="form-control" type="email" placeholder="Correo electronico">
+            <input #emailField="ngModel" [ngClass]="{'is-invalid': (emailField.errors?.required || emailField.errors?.pattern) && emailField.touched}" class="form-control" type="email" placeholder="Correo electronico" name="email" [(ngModel)]="user.email" required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+            <div class="invalid-feedback" *ngIf="emailField.errors?.required">
+                This field is required
+            </div>
+            <div class="invalid-feedback" *ngIf="emailField.errors?.pattern">
+                Please insert valid email address
+            </div>
         </div>
     </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Country</label>
+        <div class="col-md-8">
+            <select class="form-control" name="country" [(ngModel)]="user.country">
+                <option value="">Select a country</option>
+                <option *ngFor="let pais of countries" [value]="pais.code">{{pais.pais}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Genre</label>
+        <div class="col-md-8">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="genre" [(ngModel)]="user.genre" value="male">
+                <label class="form-check-label" for="exampleRadios1">
+                  Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="genre" [(ngModel)]="user.genre" value="female">
+                <label class="form-check-label" for="exampleRadios2">
+                  Female
+                </label>
+            </div>
+        </div>
+    </div>
+
 
 
 
     <div class="form-group row">
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col-md-8">
-            <button type="submit" class="btn btn-outline-primary">
+            <button [disabled]="formTemplate.valid" type="submit" class="btn btn-outline-primary">
         Guardar
       </button>
         </div>

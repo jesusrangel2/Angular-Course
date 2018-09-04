@@ -1,3 +1,111 @@
-<p>
-  form-by-data works!
-</p>
+<h4>Formularios <small>Data</small></h4>
+<hr>
+<form [formGroup]="form" (ngSubmit)="saveForm()">
+
+    <div formGroupName="fullName">
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+
+                <input class="form-control" [ngClass]="{'is-invalid': (!form.get('fullName.name').valid && form.get('fullName.name').touched )}" type="text" placeholder="Nombre" formControlName="name">
+
+                <div class="invalid-feedback" *ngIf="form.get('fullName.name').errors?.required">
+                    This field is required
+                </div>
+                <div class="invalid-feedback" *ngIf="form.get('fullName.name').errors?.minlength">
+                    This field min lenght is {{form.get('fullName.name').errors.minlength.requiredLength}}
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+
+                <input class="form-control" [ngClass]="{'is-invalid': (!form.get('fullName.lastName').valid && form.get('fullName.lastName').touched)}" type="text" placeholder="Apellido" formControlName="lastName">
+                <div class="invalid-feedback" *ngIf="form.get('fullName.lastName').errors?.required">
+                    This field is required
+                </div>
+                <div class="invalid-feedback" *ngIf="form.get('fullName.lastName').errors?.minlength">
+                    This field min lenght is {{form.get('fullName.lastName').errors.minlength.requiredLength}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-md-8">
+
+            <input class="form-control" [ngClass]="{'is-invalid': (!form.get('email').valid && form.get('email').touched) }" type="email" placeholder="Correo electronico" formControlName="email">
+            <div class="invalid-feedback" *ngIf="form.controls['email'].errors?.required">
+                This field is required
+            </div>
+            <div class="invalid-feedback" *ngIf="form.controls['email'].errors?.pattern">
+                Please insert valid email address
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Username</label>
+        <div class="col-md-8">
+
+            <input class="form-control" [ngClass]="{'is-invalid': (!form.get('username').valid && form.get('username').touched) }" type="text" placeholder="Username" formControlName="username">
+            <div class="invalid-feedback" *ngIf="form.controls['username'].errors?.required">
+                This field is required
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Password</label>
+        <div class="col-md-8">
+
+            <input class="form-control" [ngClass]="{'is-invalid': (!form.get('password1').valid && form.get('password1').touched) }" type="password" placeholder="**************" formControlName="password1">
+            <div class="invalid-feedback" *ngIf="form.controls['password1'].errors?.required">
+                This field is required
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Confirm Password</label>
+        <div class="col-md-8">
+
+            <input class="form-control" [ngClass]="{'is-invalid': (!form.get('password2').valid && form.get('password2').touched) }" type="password" placeholder="********" formControlName="password2">
+            <div class="invalid-feedback" *ngIf="form.controls['password2'].errors?.required">
+                This field is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Hobbies</label>
+        <div class="col-md-8" formArrayName="hobbies">
+            <input *ngFor="let hobby of form.controls['hobbies'].controls; let i = index" type="text" [formControlName]="i" class="form-control">
+        </div>
+
+        <button class="btn btn-primary" (click)="addHobby()">New</button>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+        </div>
+    </div>
+
+    {{form.valid}}
+    <br> {{form.status}}
+
+    
+
+</form>
