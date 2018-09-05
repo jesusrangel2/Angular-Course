@@ -1,5 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
 
+.pl-30 {
+    padding-left: 30px;
+}
+
+.departure-icon {
+    position: absolute;
+    left: 20px;
+    top: 37px;
+}
+
+.input-airport-code {
+    position: absolute;
+    right: 35px;
+    top: 32px;
+}
+
+section.list-group {
+    width: 95% !important;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, .3);
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+}
+
+section.list-group .list-group-item {
+    cursor: pointer;
+    position: relative;
+    height: 40px;
+    padding: 0px;
+}
+
+.ta-item.list-group-item .box-result {
+    position: relative;
+    height: 40px;
+}
+
+.ta-item.list-group-item .box-result i {
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    color: #eaeaea;
+}
+
+.rotate-30 {
+    transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(30deg);
+}
+
+.ta-item.list-group-item .box-result .city-name {
+    font-weight: 700;
+    position: absolute;
+    left: 35px;
+}
+
+.ta-item.list-group-item .box-result .country-name {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.ta-item.list-group-item .box-result .airport-name {
+    position: absolute;
+    bottom: 5px;
+    font-size: 10px;
+    left: 35px;
+}
+
+.ta-item.list-group-item .box-result .airport-code {
+    position: absolute;
+    right: 10px;
+}
+
+.search-input-box {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.search-input-box label {
+    color: white;
+    position: relative;
+    top: 0px;
+    font-size: 12px;
+    display: block;
+    margin: 0px 0px 2px 2px;
+}
+
+.twidget-origin-iata {
+    position: absolute;
+    right: 30px;
+    line-height: 50px;
+    top: 20px;
+    font-size: 12px;
+    color: red;
+}
+
 .main-container {
     margin-top: 40px;
     margin-bottom: 150px;
