@@ -14,6 +14,8 @@ export class HeroesComponent implements OnInit {
 
     this._firebaseService.getHeroes()
       .subscribe(data=>{
+        
+
         this.heroes = data;
     })
 

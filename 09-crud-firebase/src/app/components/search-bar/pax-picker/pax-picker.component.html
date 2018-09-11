@@ -1,0 +1,64 @@
+<div class="form-control pax-input-picker" (click)="showBox = !showBox">
+    <div class="pax-total">
+        <span class="mr-5x">{{adultPax+youngPax+childPax+babyPax}}</span>
+        <span class="">Pasajeros</span>
+    </div>
+    <div *ngIf="!businessclass" class="pax-class">economy class</div>
+    <div *ngIf="businessclass" class="pax-class">business class</div>
+</div>
+
+<div *ngIf="showBox" class="pax-box-picker">
+    <div class="row">
+        <div class="col">
+            <p>Adultos</p>
+        </div>
+        <div class="col">
+            <span class="minus-pick" (click)="adultPax = adultPax-1"><i class="fas fa-minus-circle"></i></span>
+            <span class="paxnum-pick">{{adultPax}}</span>
+            <span class="plus-pick" (click)="adultPax = adultPax+1"><i class="fas fa-plus-circle"></i></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Jovenes <small>12 a 17</small></p>
+        </div>
+        <div class="col">
+            <span class="minus-pick" (click)="youngPax = youngPax-1"><i class="fas fa-minus-circle"></i></span>
+            <span class="paxnum-pick">{{youngPax}}</span>
+            <span class="plus-pick" (click)="youngPax = youngPax+1"><i class="fas fa-plus-circle"></i></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Niños <small>2 a 11</small></p>
+        </div>
+        <div class="col">
+            <span class="minus-pick" (click)="childPax = childPax-1"><i class="fas fa-minus-circle"></i></span>
+            <span class="paxnum-pick">{{childPax}}</span>
+            <span class="plus-pick" (click)="childPax = childPax+1"><i class="fas fa-plus-circle"></i></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Bebes <small> <2 </small></p>
+        </div>
+        <div class="col">
+            <span class="minus-pick" (click)="babyPax = babyPax-1"><i class="fas fa-minus-circle"></i></span>
+            <span class="paxnum-pick">{{babyPax}}</span>
+            <span class="plus-pick" (click)="babyPax = babyPax+1"><i class="fas fa-plus-circle"></i></span>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col pax-bussinex-class" (click)="businessclass = !businessclass">
+            <i *ngIf="!businessclass" class="far fa-square mr-5x"></i>
+            <i *ngIf="businessclass" class="far fa-check-square mr-5x"></i> Business Class
+        </div>
+    </div>
+
+    <div class="row mt-2 text-center">
+        <div class="col">
+            <button class="btn btn-outline-danger" (click)="showBox = !showBox">Done!</button>
+        </div>
+    </div>
+</div>

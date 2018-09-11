@@ -10,23 +10,35 @@ export class SearchBarComponent implements OnInit {
 
   origin:string;
   origin_iata:string = 'test';
-  listOrigin:any[]
-  listArrival:string[]
+  placeHolderDepartur:string = 'From?'
+  placeHolderArrival:string = 'To?'
+  airportDeparturCode:string;
+  airportArrivalCode:string;
+  departurDatePlaceholder:string = "dd/mm/yyyy";
+  arrivalDatePlaceholder:string = "dd/mm/yyyy";
+  departurDate:Date;
+  arrivalDate:Date;
+
 
   constructor(private _searchService:SearchAirportsService) { }
 
   ngOnInit() {
   }
 
-  searchOrigin(){
+  getAirportCode(code:string, dapartur:boolean){
+    if(dapartur){
+      this.airportDeparturCode = code;
+    }else{
+      this.airportArrivalCode = code;
+    }
+  }
 
-    console.log(this.origin);
-
-    this._searchService.search(this.origin)
-        .subscribe(data => {
-          this.listOrigin = data;
-    });
-
+  getSelectDate(date:Date, dapartur:boolean ){
+    if(dapartur){
+      this.departurDate = date;
+    }else{
+      this.arrivalDate = date;
+    }
   }
 
 }

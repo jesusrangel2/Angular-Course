@@ -1,44 +1,63 @@
-<div class="container p-2">
+<div class="container p-2 search-box-container">
 
-    <form action="">
+    <div class="search-box">
+
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-info">
-                topLeft
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-white">
+                FindYourFlight
             </div>
 
-            <div class="col-md-6 col-lg-6 col-xl-6 bg-danger text-right">
-                topright
+            <div class="col-md-6 col-lg-6 col-xl-6 text-right text-white">
+                Cheap flights and airline tickets
             </div>
 
         </div>
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-danger">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="search-input-box">
                     <label for="">Origen</label>
-                    <app-input-typeahead></app-input-typeahead>
+                    <app-input-typeahead [placeholder]="placeHolderDepartur" (airportCodeEmit)="getAirportCode($event, true)"></app-input-typeahead>
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-info">
-                arrival
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="search-input-box">
+                    <label for="">Destino</label>
+                    <app-input-typeahead [placeholder]="placeHolderArrival" (airportCodeEmit)="getAirportCode($event, false)"></app-input-typeahead>
+                </div>
             </div>
 
         </div>
 
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-danger">
-                departur
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 ">
+                <div class="search-calendar-box mb-15">
+                    <label for="">Depart date</label>
+                    <app-date-picker [placeholder]="departurDatePlaceholder" (dateSelectedEmit)="getSelectDate($event,true)"></app-date-picker>
+                </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-info">
-                return
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="search-calendar-box mb-15">
+                    <label for="">Return date</label>
+                    <app-date-picker [placeholder]="arrivalDatePlaceholder" (dateSelectedEmit)="getSelectDate($event,false)"></app-date-picker>
+                </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-danger">
-                passangers
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="search-calendar-box">
+                    <label for="">Passangers</label>
+                    <app-pax-picker></app-pax-picker>
+                </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 bg-info">
-                button
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="search-button-box">
+                    <button class="btn btn-outline-danger btn-block">
+                            Buscar
+                            <i class="fas fa-search"></i>
+                        </button>
+                </div>
             </div>
 
         </div>
-    </form>
+    </div>
+
 
 </div>
